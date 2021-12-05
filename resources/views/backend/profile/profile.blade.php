@@ -4,6 +4,7 @@
 
 <style>
 
+ /* for like and unlike link*/
 .link-disabled{
 	text-decoration: none;
 	color: #626262;
@@ -11,7 +12,7 @@
   cursor: default;
 }
 
-
+ /*for cover photo */
 .cover_photo {
   position: relative;
   top: 0;
@@ -30,7 +31,7 @@
   border: 1px black solid;
 }
 
-
+ /*for profile photo */
 .profile_photo {
   position: relative;
   top: 0;
@@ -49,6 +50,7 @@
   border: 1px black solid;
 }
 
+ /* for write post*/
 .write-post-area{
 	border:0;
 	outline: 0;
@@ -56,7 +58,7 @@
 	resize: none;
 }	
 
-
+ /* for close button when you upload image*/
 .for_close_image {
   position: relative;
   top: 0;
@@ -208,7 +210,7 @@
 				</label>
 		</div>
 
-		<div class="profile-photo d-flex"style="">
+		<div class="profile-photo d-flex"style="background-color: ;">
 			<div class="profile-photo-left d-flex m-2" style="width: 80%;">
 
 				<div class="profile_photo" >
@@ -400,7 +402,8 @@
 									  		@endif
 									@endforeach
 
-						@else
+						@else 
+									<!--if the cuurent user liked this post-->
 									 @if(in_array($data->id, $like))
 								 					<!--the class for_many_count is for jquery-->
 							    			<a class="link-disabled for_many_count{{$data->id}}">You and</a>
@@ -574,15 +577,7 @@
    $(document).on('click','#delete_modal',function(){
   	  	var post_id = $(this).data('id'); //get the data-id of the edit
 
-  	 // 	var form = document.getElementById('deletePost')
-
-  	 // 	form.action='/deletepost/'+post_id
   	  	$('#post_id_delete').val(post_id);
-  	  	//console.log('deleting', form)
-
-  	  //	{{ route('post_update')}}
-  	    //	  	console.log('deleting', form)
-
 		   		$('#delete_post_modal').modal('show')
 
 	 });

@@ -20,7 +20,6 @@ class CreatePostsTable extends Migration
             $table->integer('feeling_id')->nullable();
             $table->string('image')->nullable();
             $table->integer('privacy_id')->nullable();
-            $table->integer('tag_friend_id')->nullable();
             $table->timestamps();
         });
     }

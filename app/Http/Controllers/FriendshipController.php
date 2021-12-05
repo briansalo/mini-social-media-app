@@ -27,6 +27,7 @@ class FriendshipController extends Controller
         ->whereNotIn('id', $pending_user)
         ->whereNotIn('id', $friend_1)
         ->whereNotIn('id', $friend_2)
+        ->orderBy('name', 'ASC')
         ->get();
 
         // if the current user click add friend button. it will change to cancel friend request button
@@ -66,6 +67,7 @@ class FriendshipController extends Controller
         $data->status = 'pending';
         $data->save();
 
+        //-----insert activity----//
         $activity = new Activity;
         $activity->auth_id = Auth::id();
         $activity->user_id = $id;
@@ -88,6 +90,7 @@ class FriendshipController extends Controller
         ->where('status', 'pending')
         ->delete();
 
+        //-----insert activity----//
         $activity = new Activity;
         $activity->auth_id = Auth::id();
         $activity->user_id = $id;
@@ -178,7 +181,7 @@ class FriendshipController extends Controller
         $list = Friendship::where('first_user_id', Auth::id())->where('status', 'confirmed')->pluck('second_user_id')->toArray();
         $list1 = Friendship::where('second_user_id', Auth::id())->where('status', 'confirmed')->pluck('first_user_id')->toArray();
 
-        $data['alldata'] = User::whereIn('id', $list)->orWhereIn('id', $list1)->get();
+        $data['alldata'] = User::whereIn('id', $list)->orWhereIn('id', $list1)->orderBy('name', 'ASC')->get();
 
          //get all friends of each  user
         $friends_of_each_user=[];

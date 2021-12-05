@@ -1,3 +1,6 @@
+
+
+
 <!--i include this in news feed -->
 
 <style>
@@ -8,6 +11,13 @@
 	resize: none;
 
 }	
+
+.avatar {
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
 </style>
 
 
@@ -26,9 +36,6 @@
 
 				<div class="write-post-right-side ps-2 pt-2">
 					<div>
-						@error('text_post')
-						<span class="text-danger">You need to write a post</span>
-						@enderror
 						<textarea  name="content" rows="3" cols="65" class="write-post-area" placeholder="What's on your mind?..."></textarea> 
 			    	</div>
 
@@ -75,6 +82,9 @@
 							 @endforeach 
 						</select>
 					</div>
+						@error('content')
+						<span class="text-danger">*You need to write something</span>
+						@enderror
 			    	<div class="pb-2 pt-2">
 			    		<input type="submit" class="btn btn-primary btn-sm" value="Post">
 			    	</div>	
