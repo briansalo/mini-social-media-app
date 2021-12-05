@@ -11,7 +11,6 @@ use Carbon\Carbon;
 class Post extends Model
 {
 
-
     public function user_info(){
         return $this->belongsTo(User::class,'user_id','id');
     }
@@ -37,9 +36,5 @@ class Post extends Model
         return $this->hasMany(Like::class);
     }
 
-    //checks if a post has tag
-    public function hasTag($tagId){
-        return in_array($tagId, $this->users->pluck('id')->toArray());
-    }
 
 }

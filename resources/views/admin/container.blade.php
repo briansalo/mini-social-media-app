@@ -37,31 +37,11 @@
 	width: 55px;
 	margin-right: 5px;
 }
+
+
 .line{
 	border-bottom: 2px solid #ccc;
 }
-.latest-post img{
-	width: 100px;
-	border-radius: 5px;
-	margin-right: 15px;
-}
-.news-feed img{
-	width:100%;
-	height: 50%;
-}
- .left{
-height: 300px;
-overflow-y: scroll;
-position: sticky;
-top: 0;   
- }
-.avatar {
-  vertical-align: middle;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
-
 
 
 .list-user-scroll{
@@ -75,10 +55,6 @@ top: 0;
 </style>
 </head>
 <body>
-
-
-
-
 
 <div class="container-fluid" style="background: #efefef;">
 
@@ -101,9 +77,6 @@ top: 0;
 		</div><!-- row-->
 
 </div><!-- container-->
-
-
-
 
 
 

@@ -5,13 +5,8 @@
 
 @include('backend.write_post')<!--i include the write post here -->
 <style>
-a:link {
-  color: black;
-}
-.btn-transparent:disabled{
-	background-color: transparent;
 
-}
+ /* for like and unlike link*/
 .link-disabled{
 	text-decoration: none;
 	color: #626262;
@@ -20,7 +15,7 @@ a:link {
 }
 
 
-
+ /* for close button when you upload image*/
 .for_close_image {
   position: relative;
   top: 0;
@@ -41,9 +36,6 @@ a:link {
 }
 
 </style>
-
-
-
 
 
 
@@ -160,8 +152,6 @@ a:link {
 <!-- end Delete Modal -->
 
 
-
-
 		<!----------most of variable here came from appserviceprovider---------------------->
 
 		<!------- news Feed------>
@@ -259,7 +249,7 @@ a:link {
 								 @endif
 							@endforeach		
 					@endif
-				</div><!--news-feed-header-->
+			 </div><!--news-feed-header-->
 
 
 				<div class="news-feed-content ps-3 pe-3 ">
@@ -296,7 +286,7 @@ a:link {
 								 @foreach($data->likes as $like_this_post)
 											 @if(Auth()->user()->id == $like_this_post->user->id)
 											 			<!--the class for_count_1 is for jquery-->
-														<a class="for_count_1{{$data->id}} btn btn-transparent">You like this post</a>
+														<a class="for_count_1{{$data->id}} link-disabled">You like this post</a>
 												@else
 															<!--the class for_count_1_else is for jquery-->
 														<a class="link-disabled for_count_1_else{{$data->id}}"></a>
@@ -313,6 +303,7 @@ a:link {
 									@endforeach
 
 						@else
+										<!--if the cuurent user liked this post-->
 									 @if(in_array($data->id, $like))
 								 					<!--the class for_many_count is for jquery-->
 							    			<a class="link-disabled for_many_count{{$data->id}}">You and</a>
@@ -466,15 +457,7 @@ a:link {
   $(document).on('click','#delete_modal',function(){
   	  	var post_id = $(this).data('id'); //get the data-id of the edit
 
-  	 // 	var form = document.getElementById('deletePost')
-
-  	 // 	form.action='/deletepost/'+post_id
-  	  	$('#post_id_delete').val(post_id);
-  	  	//console.log('deleting', form)
-
-  	  //	{{ route('post_update')}}
-  	    //	  	console.log('deleting', form)
-
+	  	  	$('#post_id_delete').val(post_id);
 		   		$('#delete_post_modal').modal('show')
 
 	 });

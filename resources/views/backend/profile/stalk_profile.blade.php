@@ -3,7 +3,7 @@
 @section('content')	
 
 <style>
-
+ /* for like and unlike link*/
 .link-disabled{
 	text-decoration: none;
 	color: #626262;
@@ -187,6 +187,7 @@
 									@endforeach
 
 						@else
+									<!--if the cuurent user liked this post-->
 									 @if(in_array($data->id, $like))
 								 					<!--the class for_many_count is for jquery-->
 							    			<a class="link-disabled for_many_count{{$data->id}}">You and</a>

@@ -29,8 +29,9 @@
 
 			</div><!--close important links -->
 
- 	<div class="mt-2 ps-5">
- 		<h5>Your Latest Activity:</h5>
+ <div class="mt-4 ps-5">
+ <h5>Your Activity:</h5>
+<div class="list-user-scroll" style="height: calc(50vh - 56px); position: sticky; top: 50px;">
 	<ul class="list-group">
 	@foreach($activities as $activity)
 
@@ -60,10 +61,18 @@
 		  		<li class="list-group-item list-group-item-danger">You Unfriend <i><u>{{$activity->user_info->name}}</u></i></li>
 		  		@break
 		  	@case(9)
-		  		<li class="list-group-item list-group-item-danger">You Like <i><u>{{$activity->user_info->name}}</u></i> post</li>
+		  		@if($activity->user_id == Auth()->user()->id)
+		  		<li class="list-group-item list-group-item-danger">You like your post</li>
+		  		@else
+		  		<li class="list-group-item list-group-item-danger">You like <i><u>{{$activity->user_info->name}}</u></i> post</li>
+		  		@endif
 		  		@break
 		  	@case(10)
-		  		<li class="list-group-item list-group-item-danger">You Unlike <i><u>{{$activity->user_info->name}}</u></i> post</li>
+		  		@if($activity->user_id == Auth()->user()->id)
+		  		<li class="list-group-item list-group-item-danger">You unlike your post</li>
+		  		@else
+		  		<li class="list-group-item list-group-item-danger">You unlike <i><u>{{$activity->user_info->name}}</u></i> post</li>
+		  		@endif
 		  		@break
 		  	@case(11)
 		  		<li class="list-group-item list-group-item-danger">You Stalk <i><u>{{$activity->user_info->name}}</u></i></li>
@@ -75,5 +84,6 @@
 
 	  @endforeach    
 	</ul>
+</div>
 	</div>
 </div><!-- left-side-bar--->

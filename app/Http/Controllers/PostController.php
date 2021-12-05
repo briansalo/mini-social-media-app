@@ -15,28 +15,26 @@ class PostController extends Controller
     public function PostStore(Request $request){
 
         $validatedData = $request->validate([
-            'content' => 'required',
+            'content' => 'required'
             
         ]);
 
-       // dd($request->image);
-     //  dd($request->feeling);
 
             $create = new Post;
             $create->user_id = Auth::id();
             $create->content = $request->content;
             $create->feeling_id = $request->feeling;
-          if($request->file('image')){  // if there's an image
-                $file= $request->file('image'); // store the image in the variable
-                $filename = date('YmdHi').$file->getClientOriginalName(); // make own name of the images
-                $file->move(public_path('upload/post'),$filename); //location of the storage
-                $create->image = $filename;
-            }
+              if($request->file('image')){  // if there's an image
+                    $file= $request->file('image'); // store the image in the variable
+                    $filename = date('YmdHi').$file->getClientOriginalName(); // make own name of the images
+                    $file->move(public_path('upload/post'),$filename); //location of the storage
+                    $create->image = $filename;
+                }
             $create->privacy_id = $request->post_status;
             $create->save();
             $create->users()->attach($request->tagg_friend);
 
-
+            //-------Insert Activity------//
             $activity = new Activity;
             $activity->auth_id = Auth::id();
             $activity->activity_status = '1'; //create post
@@ -52,14 +50,13 @@ class PostController extends Controller
 
 
     public function EditPostModal(Request $request){
-       //dd($request->image);
+       
         $post = Post::where('id', $request->post_id)->first();
         $tagg_friend=[];
 
                 foreach($post->users as $tag){
                     $tagg_friend[] = $tag->id;
                 }
-
             
             $data = array('post_id' =>$post->id,
                             'content' => $post->content,
@@ -108,6 +105,7 @@ class PostController extends Controller
             'alert-type' => 'success'  //success variable came from admin.blade.php in java script toastr
         );
 
+        //check the previous url
         if(str_replace(url('/'), '', url()->previous())=="/profile"){
             return redirect()->route('profile')->with($notification);
         }else{
@@ -124,6 +122,7 @@ class PostController extends Controller
        $delete->users()->detach();
        $delete->delete();
 
+       //------Insert Activity------//
         $activity = new Activity;
         $activity->auth_id = Auth::id();
         $activity->activity_status = '3'; //delete post
@@ -134,6 +133,7 @@ class PostController extends Controller
             'alert-type' => 'success'  //success variable came from admin.blade.php in java script toastr
         );
 
+        //check the previous url
         if(str_replace(url('/'), '', url()->previous())=="/profile"){
             return redirect()->route('profile')->with($notification);
         }else{
@@ -147,6 +147,7 @@ class PostController extends Controller
     public function RemoveTag($id){
 
         $post = Post::find($id);
+
         //remove only the user who want to remove the tag of this post
         $remove=[];
             foreach($post->users as $tag){  
@@ -169,6 +170,7 @@ class PostController extends Controller
             'alert-type' => 'success'  //success variable came from admin.blade.php in java script toastr
         );
 
+        //check the previous url
         if(str_replace(url('/'), '', url()->previous())=="/profile"){
             return redirect()->route('profile')->with($notification);
         }else{

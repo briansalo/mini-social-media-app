@@ -81,6 +81,7 @@ class AppServiceProvider extends ServiceProvider
             ->orWhereIn('user_id',$friend1)
             ->orderBy('updated_at', 'DESC')
             ->get();
+
             //get the date when it posted
             $date=[];
             foreach($post as $row){
@@ -99,14 +100,12 @@ class AppServiceProvider extends ServiceProvider
              $view->with('friend_request', $friend_request); 
 
             
-            //------------------User activity(left-side)---------------//
+            //------------------User activity---------------//
 
                 $activities = Activity::where('auth_id', $id)->orderBy('id','DESC')->get();
-                if(count($activities) >= 6){
+                if(count($activities) > 30){
                     $try = Activity::where('auth_id', $id)->first()->delete();
                 }
-         
-                //dd($activities);
                 $view->with('activities', $activities);
 
         }else{

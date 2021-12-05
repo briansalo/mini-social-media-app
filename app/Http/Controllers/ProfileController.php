@@ -17,7 +17,6 @@ class ProfileController extends Controller
 
       //this array contains post that current user has been tagged      
          $tag_post=[];
-
             foreach($allpost as $data){
                $tagger= [];
                $post= [];  
@@ -31,20 +30,17 @@ class ProfileController extends Controller
                    }//endif
              }//foreach
 
-
           $data['profile_post']= Post::where('user_id', auth::id())
           ->orWhereIn('id',$tag_post)
           ->orderBy('updated_at', 'DESC')
           ->get();
+
           //get the date when it posted
             $profile_date=[];
             foreach($data['profile_post'] as $row){
                 $profile_date[]=carbon::create($row->updated_at)->diffForHumans();
             }
-            //dd($profile_date);
             
-
-
         return view('backend.profile.profile', $data)->with('profile_date', $profile_date);
     }
 
@@ -111,11 +107,11 @@ class ProfileController extends Controller
             
 
             //-----insert activity----//
-        $activity = new Activity;
-        $activity->auth_id = Auth::id();
-        $activity->user_id = $id;
-        $activity->activity_status = '11'; //stalk a profile
-        $activity->save();
+            $activity = new Activity;
+            $activity->auth_id = Auth::id();
+            $activity->user_id = $id;
+            $activity->activity_status = '11'; //stalk a profile
+            $activity->save();
 
          return view('backend.profile.stalk_profile', $data)->with('profile_date', $profile_date);
     }
