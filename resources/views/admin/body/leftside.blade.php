@@ -3,8 +3,8 @@
 			  position: sticky; top: 50px;">
 
 			<div class="important-links mt-2 ml-2">
-				<div class="mb-3 mt-4 ms-5">
-					<a href="{{ route('home') }}"><img src="/icons/images.png">Home</a>
+				<div class="mb-2 mt-4 ms-5">
+					<a href="{{ route('home') }}"><img src="/icons/images.jpg">Home</a>
 				</div>
 				<div class="mb-2 ms-5">
 					 <a href="{{ route('list_of_user') }}"><img src="/icons/add_friend.png">Add Friend</a>
@@ -22,7 +22,7 @@
 				</div>
 
 				<div class="mb-3 ms-5">
-					<a href="{{ route('list_of_friend') }}"><img src="/icons/friend_list.png">Friend List</a>
+					<a href="{{ route('list_of_friend') }}"><img src="/icons/friend_list.jpg">Friend List</a>
 				</div>
 				<div class="line ms-5"  style="background-color:black;">
 				</div>
