@@ -15,6 +15,8 @@ use App\models\Postprivacy;
 use App\models\AssignPost;
 use App\models\Activity;
 
+use Illuminate\Support\Facades\URL;
+
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Auth;
@@ -39,9 +41,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-if($this->app->environment('production')) {
-    \URL::forceScheme('https');
-}
+
+    URL::forceScheme('https');
+
 
     //compose all the views....
     view()->composer('*', function ($view) 
