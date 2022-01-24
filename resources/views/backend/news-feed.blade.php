@@ -3,7 +3,7 @@
 @section('content')	
 
 
-@include('backend.write_post')<!--i include the write post here -->
+@include('backend.write_post')<!-----------------i include the write post here ---------------------->
 <style>
 
  /* for like and unlike link*/
@@ -39,7 +39,7 @@
 
 
 
-<!-- Edit Modal -->
+<!-- Edit Post Modal -->
 <div class="modal fade" id="edit_post_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -87,7 +87,7 @@
 					   </div>
 
 			    		<div class="ms-5">
-							<select class="form-select form-select-sm" id="post_status" name="post_status" style="width: 120px;">	  
+							<select class="form-select form-select-sm" id="post_status" name="post_status" style="width: 123px;">	  
 								@foreach($post_status as $data)  
 								  <option value="{{$data->id}}">{{$data->name}}</option>
 								@endforeach

@@ -11,7 +11,7 @@ use App\models\User;
 use App\models\Post;
 use App\models\Like;
 use App\models\Feeling;
-use App\models\PostStatus;
+use App\models\Postprivacy;
 use App\models\AssignPost;
 use App\models\Activity;
 
@@ -62,7 +62,7 @@ class AppServiceProvider extends ServiceProvider
            $view->with('feeling', Feeling::all()); 
 
            // get all post_status
-           $view->with('post_status', PostStatus::all());
+           $view->with('post_status', PostPrivacy::all());
 
            //get all friends of current user
            $friend = Friendship::where('first_user_id', $id)->where('status', 'confirmed')->pluck('second_user_id')->toArray();

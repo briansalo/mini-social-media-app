@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostStatusesTable extends Migration
+class CreatePostprivaciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePostStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_statuses', function (Blueprint $table) {
+        Schema::create('postprivacies', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreatePostStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_statuses');
+        Schema::dropIfExists('postprivacies');
     }
 }

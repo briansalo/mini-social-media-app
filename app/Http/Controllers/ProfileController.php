@@ -11,6 +11,11 @@ use App\Models\Activity;
 use Carbon\Carbon;
 class ProfileController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware(['auth']); //only auth user user can access this controller
+    }
+
     public function Profile(){
 
          $allpost = Post::all();

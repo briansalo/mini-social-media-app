@@ -61,7 +61,7 @@
 			    		</div>
 			    		
 			    		<div class="ms-5">
-							<select class="form-select form-select-sm" id="select" name="post_status" style="width: 120px;">	  
+							<select class="form-select form-select-sm" id="select" name="post_status" style="width: 123px;">	  
 								@foreach($post_status as $data)  
 								  <option value="{{$data->id}}">{{$data->name}}</option>
 								@endforeach

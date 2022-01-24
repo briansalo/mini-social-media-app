@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Auth;
 
 class FriendshipController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']); //only auth user user can access this controller
+    }
 
     public function ListOfUser(){
 

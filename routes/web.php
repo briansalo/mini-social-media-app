@@ -37,7 +37,6 @@ require __DIR__.'/auth.php';
     Route::get('/add_friend/{user_id}', [FriendshipController::class, 'AddFriend'])->name('add_friend');
     Route::get('/cancel_friend_request/{user_id}', [FriendshipController::class, 'CancelFriendRequest'])->name('cancel_friend_request');
 
-
     Route::get('/friend_request', [FriendshipController::class, 'FriendRequest'])->name('friend_request');
 
     Route::get('/accept_friend_request,{user_id}', [FriendshipController::class, 'AcceptFriendRequest'])->name('accept_friend_request');
@@ -47,6 +46,7 @@ require __DIR__.'/auth.php';
     Route::get('/list_of_friend', [FriendshipController::class, 'ListOfFriend'])->name('list_of_friend');
 
     Route::get('/unfriend_user/{user_id}', [FriendshipController::class, 'UnfriendUser'])->name('unfriend_user');
+
 
 
     // post controller
@@ -59,11 +59,13 @@ require __DIR__.'/auth.php';
 
     Route::get('/remove_tag/{post_id}', [PostController::class, 'RemoveTag'])->name('remove.tag');
 
+
     //Profile Controller
     Route::get('/profile', [ProfileController::class, 'Profile'])->name('profile');
     Route::post('/profile_update', [ProfileController::class, 'ProfileUpdate'])->name('profile_update');  
 
    Route::get('/stalk_profile/{id}', [ProfileController::class, 'StalkProfile'])->name('stalk.profile'); 
+
 
    //like controller
     Route::get('/like', [LikeController::class, 'Like'])->name('like');

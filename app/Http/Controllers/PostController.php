@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    
+
+    public function __construct(){
+        $this->middleware(['auth']); //only auth user user can access this controller
+    }
+
     public function PostStore(Request $request){
 
         $validatedData = $request->validate([

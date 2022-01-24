@@ -62,7 +62,7 @@
 		  		@break
 		  	@case(9)
 		  		@if($activity->user_id == Auth()->user()->id)
-		  		<li class="list-group-item list-group-item-danger">You like your post</li>
+		  		<li class="list-group-item list-group-item-danger fade-in">You like your post</li>
 		  		@else
 		  		<li class="list-group-item list-group-item-danger">You like <i><u>{{$activity->user_info->name}}</u></i> post</li>
 		  		@endif

@@ -24,7 +24,7 @@ class Post extends Model
     }
 
     public function privacy_info(){
-        return $this->belongsTo(PostStatus::class,'privacy_id','id');
+        return $this->belongsTo(Postprivacy::class,'privacy_id','id');
     }
 
     //for tagged post

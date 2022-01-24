@@ -11,6 +11,10 @@ use App\Models\Post;
 
 class LikeController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']); //only auth user user can access this controller
+    }
+
     public function Like(Request $request){
         
         $create = new Like;
