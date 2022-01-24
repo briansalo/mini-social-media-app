@@ -39,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+if($this->app->environment('production')) {
+    \URL::forceScheme('https');
+}
 
     //compose all the views....
     view()->composer('*', function ($view) 
