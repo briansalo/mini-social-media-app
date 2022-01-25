@@ -6,16 +6,16 @@ use Illuminate\Support\ServiceProvider;
 
 
 use Illuminate\Support\Facades\View;
-use App\models\Friendship;
-use App\models\User;
-use App\models\Post;
-use App\models\Like;
-use App\models\Feeling;
-use App\models\Postprivacy;
-use App\models\AssignPost;
-use App\models\Activity;
+use App\Models\Friendship;
+use App\Models\User;
+use App\Models\Post;
+use App\Models\Like;
+use App\Models\Feeling;
+use App\Models\Postprivacy;
+use App\Models\AssignPost;
+use App\Models\Activity;
 
-use Illuminate\Support\Facades\URL;
+
 
 use Carbon\Carbon;
 
@@ -41,8 +41,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-
-    URL::forceScheme('https');
 
 
     //compose all the views....

@@ -23,7 +23,6 @@ class FeelingsTableSeeder extends Seeder
                 array('id' => 4,'icon_name' => "far fa-angry",'name' => "mad"),
                 array('id' => 5,'icon_name' => "fas fa-surprise",'name' => "shock"),
 
-
                 );
                 DB::table('feelings')->insert($feeling);
     }

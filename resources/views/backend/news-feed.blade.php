@@ -154,7 +154,7 @@
 
 		<!----------most of variable here came from appserviceprovider---------------------->
 
-		<!------- news Feed------>
+		<!---------------------- news Feed-------------------	---->
 	 @foreach($post as $key => $data)
 			<div class="news-feed mt-3 rounded-2 line" style="background: white;">
 				<div class="news-feed-header justify-content-between d-flex ps-3 pt-2">
