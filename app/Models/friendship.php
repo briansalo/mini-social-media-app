@@ -14,5 +14,4 @@ class Friendship extends Model
     public function second_user_info(){
         return $this->belongsTo(User::class,'second_user_id','id');
     }
-
 }
