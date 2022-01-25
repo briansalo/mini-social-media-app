@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 
 use Illuminate\Support\Facades\View;
-use App\Models\friendship;
+use App\Models\Friendship;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Like;
