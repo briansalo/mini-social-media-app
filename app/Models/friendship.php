@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Friendship extends Model
 {
-
     public function user_info(){
         return $this->belongsTo(User::class,'first_user_id','id');
     }
