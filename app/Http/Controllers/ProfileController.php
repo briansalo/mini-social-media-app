@@ -9,6 +9,8 @@ use App\Models\Friendship;
 use App\Models\User;
 use App\Models\Activity;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+
 class ProfileController extends Controller
 {
 
@@ -64,12 +66,15 @@ class ProfileController extends Controller
             $update->cover_photo = $filename;
         }
 
+
         if($request->file('profile')){  // if there's an image
-            $file= $request->file('profile'); // store the image in the variable
-            @unlink(public_path('upload/profile/'.$update->profile_photo)); //to delete the previous image
-            $filename = date('YmdHi').$file->getClientOriginalName(); // make own name of the images
-            $file->move(public_path('upload/profile'),$filename); //location of the storage
-            $update->profile_photo = $filename;
+                Storage::delete($update->profile_photo);
+                $profile = $request->file('profile')->store('public/profile');
+          //  $file= $request->file('profile'); // store the image in the variable
+           // @unlink(public_path('upload/profile/'.$update->profile_photo)); //to delete the previous image
+            //$filename = date('YmdHi').$file->getClientOriginalName(); // make own name of the images
+            //$file->move(public_path('upload/profile'),$filename); //location of the storage
+            $update->profile_photo = $profile;
         }
         $update->save();
 
