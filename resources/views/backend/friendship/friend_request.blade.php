@@ -9,7 +9,7 @@
 @else
 	@foreach($alldata as $key => $data)
 
-		<div class="d-flex m-3"style="background-color: white">
+		<div class="d-flex m-3 rounded-3"style="background-color: white">
 
 			<div class="pic_name_friends_field d-flex m-2" style="width: 70%">
 				<div class="" style="background-color: black">
@@ -21,7 +21,7 @@
 				</div>
 				<div class=" ms-2" style="">
 					<div style="font-size: 30px;">
-						{{$data->name}}
+						{{ucwords($data->name)}}
 					</div>
 					<div>
 						{{count($friends_of_each_user[$key])}} Friends
