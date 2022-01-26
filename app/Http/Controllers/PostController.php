@@ -75,7 +75,7 @@ class PostController extends Controller
 
 
     public function PostUpdate(Request $request){
-
+        
         $update = Post::where('id',$request->post_id)->first();
 
             if($request->content != null){

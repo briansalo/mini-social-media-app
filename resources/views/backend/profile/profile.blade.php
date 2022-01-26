@@ -567,7 +567,7 @@
   $(document).on('click','#close',function(){
 
 	  	$('#close').addClass('d-none');
-	  	$('#showimage-modal').attr('src', "/upload/post/white.jpg");
+	  	$('#showimage-modal').attr('src', "/upload/post/white.JPG");
 
   		$('#check_image').val("delete image");
   
