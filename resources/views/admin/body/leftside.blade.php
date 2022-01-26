@@ -24,7 +24,7 @@
 				<div class="mb-3 ms-5">
 					<a href="{{ route('list_of_friend') }}"><img src="/icons/friend_list.jpg">Friend List</a>
 				</div>
-				<div class="line ms-5"  style="background-color:black;">
+				<div class="line ms-5"  style="background-color:black; border:1px solid #0D6EFD;">
 				</div>
 
 			</div><!--close important links -->
