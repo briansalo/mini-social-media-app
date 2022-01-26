@@ -2,17 +2,17 @@
 		<div class="col-md-3" style="height: calc(100vh - 56px);
 			  position: sticky; top: 50px;">
 			  <!--------for NEW USER-------->
-			<div class="new-register mx-2" style="background-color: white;"> 
+			<div class="new-register mx-2 rounded-3" style="background-color: white; border-bottom:1px solid #0D6EFD;"> 
 			  	<div class="mt-4 ps-5" style="font-family: Times New Roman; font-size: 25px;">
-			  		New User
+			  		<u>New User</u>
 			  	</div>
 			  	<!--$latest_user variables came from appserviceprovider-->
 			  @foreach($latest_user as $user)	
 				<div class="mb-2" style="background-color: white;">
 				  @if(!empty($user->profile_photo))
-					<img src="{{url('/upload/profile/'.$user->profile_photo)}}" class="rounded-circle ms-2" style=" background: white; width: 15%; height: 50px;">  <a href="{{ route('stalk.profile', $user->id)}}">{{$user->name}}</a>
+					<img src="{{url('/upload/profile/'.$user->profile_photo)}}" class="rounded-circle ms-2" style=" background: white; width: 15%; height: 50px;">  <a href="{{ route('stalk.profile', $user->id)}}">{{ucwords($user->name)}}</a>
 					@else
-					<img src="/upload/profile/profile.jpg" class="rounded-circle ms-2" style=" background: white; width: 15%; height: 50px;">  <a href="{{ route('stalk.profile', $user->id)}}">{{$user->name}}</a>
+					<img src="/upload/profile/profile.jpg" class="rounded-circle ms-2" style=" background: white; width: 15%; height: 50px;">  <a href="{{ route('stalk.profile', $user->id)}}">{{ucwords($user->name)}}</a>
 				  @endif
 				</div>	
 			  @endforeach
@@ -28,11 +28,11 @@
 			  	<div class="list-user-scroll" style="height: calc(58vh - 56px);
 			  		position: sticky; top: 50px;">
 					  @foreach($all_user as $user)
-						<div class="mb-2" style="background-color: white">
+						<div class="mb-2 rounded-3" style="background-color: white; border-top:2px solid #0D6EFD;">
 						  @if(!empty($user->profile_photo))
-							<img src="{{url('/upload/profile/'.$user->profile_photo)}}" class="rounded-circle ms-2 my-1" style=" background: white; width: 15%; height: 50px;"> <a href="{{ route('stalk.profile', $user->id)}}">{{$user->name}}</a>
+							<img src="{{url('/upload/profile/'.$user->profile_photo)}}" class="rounded-circle ms-2 my-1" style=" background: white; width: 15%; height: 50px;"> <a href="{{ route('stalk.profile', $user->id)}}">{{ucwords($user->name)}}</a>
 							@else
-							<img src="/upload/profile/profile.jpg" class="rounded-circle ms-2 my-1" style=" background: white; width: 15%; height: 50px;"> <a href="{{ route('stalk.profile', $user->id)}}">{{$user->name}}</a>
+							<img src="/upload/profile/profile.jpg" class="rounded-circle ms-2 my-1" style=" background: white; width: 15%; height: 50px;"> <a href="{{ route('stalk.profile', $user->id)}}">{{ucwords($user->name)}}</a>
 						  @endif
 						</div>	
 					 @endforeach

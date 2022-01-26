@@ -3,7 +3,7 @@
 @section('content')	
 
 
-@include('backend.write_post')<!-----------------i include the write post here ---------------------->
+
 <style>
 
  /* for like and unlike link*/
@@ -36,6 +36,11 @@
 }
 
 </style>
+
+
+
+@include('backend.write_post')<!-----------------i include the write post here ---------------------->
+
 
 
 
