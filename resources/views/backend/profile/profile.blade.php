@@ -279,7 +279,7 @@
 						</div>
 						<div>
 							<div style="font-size: 20px; ">
-							  <strong>{{$data->user_info->name}}</strong>
+							  <strong>{{ucwords($data->user_info->name)}}</strong>
 
 							  <!--check if there's feeling in this post-->
 							  @if($data->feeling_info !=null)
@@ -572,7 +572,7 @@
   		$('#check_image').val("delete image");
   
   });	
-  
+
 
   $(document).on('click','#image-modal',function(){
  
