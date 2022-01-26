@@ -454,6 +454,11 @@
   });	
 
 
+  $(document).on('click','#image-modal',function(){
+ 
+  	$('#check_image').val("");
+	 });
+
 
   $(document).on('click','#delete_modal',function(){
   	  	var post_id = $(this).data('id'); //get the data-id of the edit

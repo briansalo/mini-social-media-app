@@ -572,6 +572,12 @@
   		$('#check_image').val("delete image");
   
   });	
+  
+
+  $(document).on('click','#image-modal',function(){
+ 
+  	$('#check_image').val("");
+	 });
 
 
    $(document).on('click','#delete_modal',function(){
