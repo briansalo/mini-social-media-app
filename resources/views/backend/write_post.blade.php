@@ -42,7 +42,7 @@
 			    	<div class="d-flex" style="width: 500px;">
 			    		<div style="width:100px;">
 							<select name="feeling" id="feeling" >
-							   <option value="">Feeling</option>
+							   <option value="">Feelings</option>
 							 @foreach($feeling as $data)  
 							   <option value="{{$data->id}}" data-icon="{{$data->icon_name}}">{{$data->name}}
 							  @endforeach 	
