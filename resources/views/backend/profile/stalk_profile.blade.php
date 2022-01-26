@@ -36,7 +36,7 @@
 
 				<div class=" ms-2" style="">
 					<div style="font-size: 30px;">
-					{{$stalk_profile->name}}
+					{{ucwords($stalk_profile->name)}}
 					</div>
 					<div>
 						{{count($get_all_friends)}} Friends
@@ -78,7 +78,7 @@
 						</div>
 						<div>
 							<div style="font-size: 20px; ">
-							  <strong>{{$data->user_info->name}}</strong>
+							  <strong>{{ucwords($data->user_info->name)}}</strong>
 
 							  <!--check if there's feeling in this post-->
 							  @if($data->feeling_info !=null)
