@@ -162,7 +162,7 @@
 					<div class="d-flex">
 						<div>
 						@if(!empty($data->user_info->profile_photo))	
-							<img src="{{Storage::url($data->user_info->profile_photo)}}" class="rounded-circle" 
+							<img src="{{url('/upload/profile/'.$data->user_info->profile_photo)}}" class="rounded-circle" 
 							style=" background: white; width: 50px; height:50px">
 						@else
 							<img src="/upload/profile/profile.jpg" class="rounded-circle" style=" background: white; width: 50px; height:50px">
