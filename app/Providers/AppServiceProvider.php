@@ -54,7 +54,7 @@ if($this->app->environment('production')) {
            $id = auth::id();
 
         //......--------------get all the latest user---------------------//
-           $latest_user = User::orderBy('id','desc')->take(2)->get();
+           $latest_user = User::orderBy('id','desc')->where('id','!=', $id)->take(2)->get();
             $view->with('latest_user', $latest_user); 
 
 
