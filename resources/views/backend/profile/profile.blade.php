@@ -229,7 +229,7 @@
 
 				<div class=" ms-2">
 					<div style="font-size: 30px;">
-					<input type="text" name="name" class="form-control form-control-sm"value="{{auth()->user()->name}}">
+					<input type="text" name="name" maxlength="25" class="form-control form-control-sm"value="{{auth()->user()->name}}">
 					</div>
 					<div>
 						<!--this variable came from appserviceprovider-->
