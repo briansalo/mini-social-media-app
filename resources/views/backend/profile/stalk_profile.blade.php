@@ -96,18 +96,18 @@
 									@for($i=0; $i<$data->users->count(); $i++)
 										<!--get the name of first array-->
 										@if($i ==0)
-							  			<b>{{$data->users[$i]->name}}</b>
+							  			<b>{{ucwords($data->users[$i]->name)}}</b>
 										@endif
 									@endfor
 
 								 	and
 
-					    			<a href="#" data-toggle="dropdown">{{$data->users->count()-1}} others
+					    			<a href="#" data-bs-toggle="dropdown" aria-expanded="false">{{$data->users->count()-1}} others
 									  <div class="dropdown-menu dropdown-menu-right">
 									  	@for($i=0; $i<$data->users->count(); $i++)
 									  		<!--get the name of second array and the rest of array-->
 									  		@if($i !=0)
-									    	<a class="dropdown-item" href="#">{{$data->users[$i]->name}}</a>
+									    	<a class="dropdown-item">{{ucwords($data->users[$i]->name)}}</a>
 									   		 @endif
 									    @endfor
 									  </div>
@@ -116,7 +116,7 @@
 								<!--else just show the name of user that tagged-->
 							   @else
 								    @foreach($data->users as $tag)
-										 <b>{{$tag->name}}</b>
+										 <b>{{ucwords($tag->name)}}</b>
 									@endforeach
 							  @endif
 							</div>
@@ -179,7 +179,7 @@
 							    						{{$data->likes->count()}} users like this post
 													  		<div class="dropdown-menu dropdown-menu-end">
 																	@foreach($data->likes as $like_this_post)										  	
-														   			 	<a class="dropdown-item" href="#">{{$like_this_post->user->name}}</a>   	  
+														   			 	<a class="dropdown-item">{{ucwords($like_this_post->user->name)}}</a>   	  
 																	@endforeach									   		
 														   </div>
 													 </a>														
@@ -197,7 +197,7 @@
 													  <div class="dropdown-menu dropdown-menu-end">
 																@foreach($data->likes as $like_this_post)					
 																		@if(Auth()->user()->id != $like_this_post->user->id)				  	
-														    			<a class="dropdown-item" href="#">{{$like_this_post->user->name}}</a>
+														    			<a class="dropdown-item">{{ucwords($like_this_post->user->name)}}</a>
 														    		@endif
 																@endforeach									   		
 													  </div>
@@ -210,7 +210,7 @@
 							    					{{$data->likes->count()}} users  like this post
 													  <div class="dropdown-menu dropdown-menu-end">
 																@foreach($data->likes as $like_this_post)									  	
-													    	<a class="dropdown-item" href="#">{{$like_this_post->user->name}}</a>
+													    	<a class="dropdown-item">{{ucwords($like_this_post->user->name)}}</a>
 																@endforeach									   		
 													  </div>
 												</a>	

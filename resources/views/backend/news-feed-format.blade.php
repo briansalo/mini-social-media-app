@@ -1,46 +1,4 @@
 
-@extends('admin.container')
-@section('content')	
-
-
-
-<style>
-
- /* for like and unlike link*/
-.link-disabled{
-	text-decoration: none;
-	color: #626262;
-	  pointer-events: none;
-  cursor: default;
-}
-
-
- /* for close button when you upload image*/
-.for_close_image {
-  position: relative;
-  top: 0;
-  left: 0;
-}
-.close_image {
-  position: relative;
-  top: 0;
-  left: 0;
-
-}
-.close_button {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  border: 1px black solid;
-  
-}
-
-</style>
-
-
-
-@include('backend.write_post')<!-----------------i include the write post here ---------------------->
-
 
 
 
@@ -301,7 +259,7 @@
 							    						{{$data->likes->count()}} users like this post
 													  		<div class="dropdown-menu dropdown-menu-end">
 																	@foreach($data->likes as $like_this_post)										  	
-														   			 	<a class="dropdown-item">{{ucwords($like_this_post->user->name)}}</a>   	  
+														   			 	<a class="dropdown-item" href="#">{{$like_this_post->user->name}}</a>   	  
 																	@endforeach									   		
 														   </div>
 													 </a>														
@@ -319,7 +277,7 @@
 													  <div class="dropdown-menu dropdown-menu-end">
 																@foreach($data->likes as $like_this_post)					
 																		@if(Auth()->user()->id != $like_this_post->user->id)				  	
-														    			<a class="dropdown-item">{{ucwords($like_this_post->user->name)}}</a>
+														    			<a class="dropdown-item" href="#">{{$like_this_post->user->name}}</a>
 														    		@endif
 																@endforeach									   		
 													  </div>
@@ -332,7 +290,7 @@
 							    					{{$data->likes->count()}} users  like this post
 													  <div class="dropdown-menu dropdown-menu-end">
 																@foreach($data->likes as $like_this_post)									  	
-													    	<a class="dropdown-item">{{ucwords($like_this_post->user->name)}}</a>
+													    	<a class="dropdown-item" href="#">{{$like_this_post->user->name}}</a>
 																@endforeach									   		
 													  </div>
 												</a>	
@@ -477,4 +435,3 @@
 
 
 </script>
-@endsection
