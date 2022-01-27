@@ -3,8 +3,8 @@
 			  position: sticky; top: 50px;">
 			  <!--------for NEW USER-------->
 			<div class="new-register mx-2 rounded-3" style="background-color: white; border-bottom:1px solid #0D6EFD;"> 
-			  	<div class="mt-4 ps-5" style="font-family: Times New Roman; font-size: 25px;">
-			  		<u>New User</u>
+			  	<div class="mt-4 ps-5 text-white rounded-3" style="font-family: Times New Roman; font-size: 25px; background-color: #0D6EFD;">
+			  		New User
 			  	</div>
 			  	<!--$latest_user variables came from appserviceprovider-->
 			  @foreach($latest_user as $user)	
