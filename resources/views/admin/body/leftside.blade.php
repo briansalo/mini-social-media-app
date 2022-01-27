@@ -37,34 +37,36 @@
 
 		@switch($activity->activity_status)
 			@case(1)
-		  		<li class="list-group-item list-group-item-danger">You Create a post</li>
+		  		<li class="list-group-item list-group-item-danger">You created a post</li>
 		  		@break
 		  	@case(2)
-		  		<li class="list-group-item list-group-item-danger">You update a post</li>
+		  		<li class="list-group-item list-group-item-danger">You updated a post</li>
 		  		@break
 		  	@case(3)
-		  		<li class="list-group-item list-group-item-danger">You delete a post</li>
+		  		<li class="list-group-item list-group-item-danger">You deleted a post</li>
 		  		@break
 		  	@case(4)
-		  		<li class="list-group-item list-group-item-danger">You sent a friend request to <i><u>{{$activity->user_info->name}}</u></i></li>
+		  		<li class="list-group-item list-group-item-danger">
+		  			You sent a friend request to <i><u>{{ucwords($activity->user_info->name)}}</u></i>
+		  		</li>
 		  		@break
 		  	@case(5)
-		  		<li class="list-group-item list-group-item-danger">You cancel your friend request to <i><u>{{$activity->user_info->name}}</u></i></li>
+		  		<li class="list-group-item list-group-item-danger">You cancelled your friend request to <i><u>{{ucwords($activity->user_info->name)}}</u></i></li>
 		  		@break
 		  	@case(6)
-		  		<li class="list-group-item list-group-item-danger">You accept a friend request from <i><u>{{$activity->user_info->name}}</u></i></li>
+		  		<li class="list-group-item list-group-item-danger">You accepted a friend request from <i><u>{{ucwords($activity->user_info->name)}}</u></i></li>
 		  		@break
 		  	@case(7)
-		  		<li class="list-group-item list-group-item-danger">You did not accept <i><u>{{$activity->user_info->name}}</u></i></li>
+		  		<li class="list-group-item list-group-item-danger">You did not accept <i><u>{{$ucwords(activity->user_info->name)}}</u></i></li>
 		  		@break
 		   	@case(8)
-		  		<li class="list-group-item list-group-item-danger">You Unfriend <i><u>{{$activity->user_info->name}}</u></i></li>
+		  		<li class="list-group-item list-group-item-danger">You unfriend <i><u>{{ucwords($activity->user_info->name)}}</u></i></li>
 		  		@break
 		  	@case(9)
 		  		@if($activity->user_id == Auth()->user()->id)
 		  		<li class="list-group-item list-group-item-danger fade-in">You like your post</li>
 		  		@else
-		  		<li class="list-group-item list-group-item-danger">You like <i><u>{{$activity->user_info->name}}</u></i> post</li>
+		  		<li class="list-group-item list-group-item-danger">You like <i><u>{{ucwords($activity->user_info->name)}}</u></i> post</li>
 		  		@endif
 		  		@break
 		  	@case(10)
@@ -75,10 +77,10 @@
 		  		@endif
 		  		@break
 		  	@case(11)
-		  		<li class="list-group-item list-group-item-danger">You Stalk <i><u>{{$activity->user_info->name}}</u></i></li>
+		  		<li class="list-group-item list-group-item-danger">You stalked <i><u>{{ucwords($activity->user_info->name)}}</u></i></li>
 		  		@break
 		  	@case(12)
-		  		<li class="list-group-item list-group-item-danger">You remove tag from<i><u>{{$activity->user_info->name}}</u></i> post</li>
+		  		<li class="list-group-item list-group-item-danger">You removed tag from<i><u>{{ucwords($activity->user_info->name)}}</u></i> post</li>
 		  		@break
 		 @endswitch 	 	  	
 
