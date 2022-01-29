@@ -56,6 +56,24 @@ top: 0;
 </head>
 <body>
 
+<!-- Modal if the screen is small -->
+<div class="modal fade" id="forSmallScreen" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Note:</h5>
+
+      </div>
+      <div class="modal-body">
+        <h5>As of now, this application is not applicable for small screen.</h5>
+        
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><Br>
+
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container-fluid" style="background: #efefef;">
 
 	<!-- navbar-->
@@ -68,6 +86,7 @@ top: 0;
 
 				<!-- main content-->
 				<div class="col-md-6 px-4 pb-3">
+
 					@yield('content')
 				</div>
 
@@ -82,6 +101,26 @@ top: 0;
 
 <script>
 $(document).ready(function() {
+
+
+    // This will fire when document is ready:
+    $(window).resize(function() {
+        // This will fire each time the window is resized:
+        if($(window).width() >= 1265) {
+            // if larger or equal
+            $('#forSmallScreen').modal('hide');
+        } else {
+        	$('#forSmallScreen').modal('show');
+            // if smaller
+           // $("#for_desktop").attr('class', '');
+            //$("#for_margin").attr('class', 'card mt-5 mb-5');
+        }
+    }).resize(); // This will simulate a resize to trigger the initial run.
+
+
+
+
+
     $('.tagg_friend').select2();
 
     $('.tagg_friend_modal').select2({
