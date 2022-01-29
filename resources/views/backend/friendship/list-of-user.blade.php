@@ -14,7 +14,7 @@
 					@endif
 				</div>
 				<div class=" ms-2" style="">
-					<div style="font-size: 30px;">
+					<div style="font-size: 25px;">
 						{{ucwords($data->name)}}
 					</div>
 					<div>
