@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function log_out(){
-
-        User::where('id', Auth::user()->id)->update(['last_activity'=> Carbon::now()->subMinutes(2)]);
+        if(auth::check()){
+            User::where('id', Auth::user()->id)->update(['last_activity'=> Carbon::now()->subMinutes(2)]);
+        }
         Auth::logout();
         return redirect('/login');
     }
