@@ -15,7 +15,7 @@
                             <div class="position-relative" v-else>
                                 <img :src="'/upload/profile/profile.jpg'" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
                             </div>
-                                <!---->
+                            <!---->
                             <a :href="'/stalk_profile/'+this.receiverid" target="_blank">
                                 <div class="flex-grow-1 ps-2 toCapitalFirst">
                                     <strong> {{this.receiveruser.name}}</strong>
@@ -26,22 +26,29 @@
 
 					<div class="position-relative" id="containerbrian">
 						<div class="chat-messages p-4">
+             <!------------for loop the message---------------->
                         <div v-for="message in messages" :key="message.id">
-                            
+                            <!-- condition in time-->
+                            <div class="time-right" v-if="authid==message.user_id">
+                                {{moment(message.created_at).calendar()}}
+                            </div>
+                            <div class="time-left" v-else>
+                                {{moment(message.created_at).calendar()}}
+                            </div>
+                            <!---->
+
                             <!--condition if the message from authenticated user-->
 							<div class="chat-message-right pb-4" v-if="authid==message.user_id">
-                                <!---profile pic----->
+                                <!---condition profile pic----->
 								<div v-if="message.user.profile_photo">
-									<img :src="'/upload/profile/'+message.user.profile_photo" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-									<div class="text-muted small text-nowrap mt-2">2:33 am</div>
+									<img :src="'/upload/profile/'+message.user.profile_photo" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">							
 								</div>
 								<div v-else>
 									<img :src="'/upload/profile/profile.jpg'" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-									<div class="text-muted small text-nowrap mt-2">2:33 am</div>
 								</div>
                                 <!---->
+        
 								<div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                                    
                                         {{message.message}}
 								</div>
 							</div>
@@ -51,11 +58,9 @@
                                 <!---profile pic----->
 								<div v-if="message.user.profile_photo">
 									<img :src="'/upload/profile/'+message.user.profile_photo" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-									<div class="text-muted small text-nowrap mt-2">2:33 am</div>
 								</div>
 								<div v-else>
 									<img :src="'/upload/profile/profile.jpg'" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-									<div class="text-muted small text-nowrap mt-2">2:33 am</div>
 								</div>
                                 <!---->
 								<div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
@@ -84,6 +89,7 @@
 
 
 <script>
+import moment from 'moment';
 export default {
      props: ["authid","receiverid","authuser","receiveruser"],
 
@@ -91,7 +97,8 @@ export default {
         return {
             messages: [],
             newMessage:"",
-            test:''
+            moment:moment,
+
          }
      },
     created() {
@@ -148,16 +155,18 @@ export default {
 }
 
 .chat-message-left,
-.chat-message-right {
+.chat-message-right,
+.time-left,
+.time-right {
     display: flex;
     flex-shrink: 0
 }
 
-.chat-message-left {
+.chat-message-left, .time-left {
     margin-right: auto
 }
 
-.chat-message-right {
+.chat-message-right, .time-right {
     flex-direction: row-reverse;
     margin-left: auto
 }
