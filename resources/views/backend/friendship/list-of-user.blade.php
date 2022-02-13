@@ -15,7 +15,9 @@
 				</div>
 				<div class=" ms-2" style="">
 					<div style="font-size: 25px;">
+						<a href="{{route('stalk.profile',$data->id)}}">
 						{{ucwords($data->name)}}
+						</a>
 					</div>
 					<div>
 						{{count($friends_of_each_user[$key])}} Friends
