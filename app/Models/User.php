@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Message;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -20,7 +21,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $appends=['Isonline'];
+    protected $appends=['Isonline','IsFriend'];
 
     protected $fillable = [
         'name',
@@ -83,5 +84,21 @@ class User extends Authenticatable
         }
         
         return false;
+    }
+
+
+    //for vuejs
+    public function getIsFriendAttribute(){
+
+        $list = Friendship::where('first_user_id', Auth::id())->where('status', 'confirmed')->pluck('second_user_id')->toArray();
+        $list1 = Friendship::where('second_user_id', Auth::id())->where('status', 'confirmed')->pluck('first_user_id')->toArray();
+        $list_of_friend = User::whereIn('id', $list)->orWhereIn('id', $list1)->orderBy('name', 'ASC')->pluck('id')->toArray();
+
+        if(in_array($this->id, $list_of_friend)){
+            return true;
+        }
+
+        return false;
+
     }
 }

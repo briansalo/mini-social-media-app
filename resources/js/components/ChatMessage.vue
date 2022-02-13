@@ -1,4 +1,21 @@
 <template>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Unable to send messages!!!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        You need to be friends before you can have conversation 
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <main class="content">
     <div class="container p-0 pt-4">
 
@@ -132,14 +149,18 @@ export default {
         },
 
         sendMessage(){
-            axios.post('/messages',{
-                message:this.newMessage,
-                receiver_id:this.receiverid,
-            }).then(response => {
-                //instead of push i use unshift to reverse. since our css is reverse
-                this.messages.unshift(response.data)
-                this.newMessage=''
-            });
+            if(this.receiveruser.IsFriend){
+                axios.post('/messages',{
+                    message:this.newMessage,
+                    receiver_id:this.receiverid,
+                }).then(response => {
+                    //instead of push i use unshift to reverse. since our css is reverse
+                    this.messages.unshift(response.data)
+                    this.newMessage=''
+                });
+            }else{
+                $('#exampleModal').modal('show');
+            }
         },
 
    
