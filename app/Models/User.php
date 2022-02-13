@@ -57,4 +57,16 @@ class User extends Authenticatable
     }  
 
 
+    public function isonline(){
+        $user = User::where('id', $this->id)->first();
+        $now = Carbon::now();
+        $last_activity= Carbon::create($user->last_activity);
+        
+         if($last_activity->addMinutes(1) >= $now){
+                return true;
+        }
+        
+        return false;
+    }
+
 }

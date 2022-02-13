@@ -28,12 +28,14 @@ use App\Http\Controllers\ChatController;
 
 Route::get('/home', function () {
     return view('backend.news-feed');
-})->middleware(['auth'])->name('home');
+})->middleware(['auth','last_activity'])->name('home');
 
 require __DIR__.'/auth.php';
 
     Route::get('/', [UserController::class, 'log_out'])->name('log_out');
 
+Route::middleware(['last_activity'])->group(function () {
+    
     //friendship controller
     Route::get('/list_of_user', [FriendshipController::class, 'ListOfUser'])->name('list_of_user');
     Route::get('/add_friend/{user_id}', [FriendshipController::class, 'AddFriend'])->name('add_friend');
@@ -79,3 +81,6 @@ require __DIR__.'/auth.php';
     Route::get('/selected-user/{receiver_id}', [ChatController::class, 'selectedusers'])->name('chat.selectedUser');
     Route::get('/messages/{receiver_id}', [ChatController::class, 'fetchMessages']);
     Route::post('/messages', [ChatController::class, 'sendMessage']);
+
+
+});//middleware

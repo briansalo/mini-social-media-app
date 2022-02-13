@@ -10,9 +10,34 @@
 			  @foreach($latest_user as $user)	
 				<div class="mb-2" style="background-color: white;">
 				  @if(!empty($user->profile_photo))
-					<img src="{{url('/upload/profile/'.$user->profile_photo)}}" class="rounded-circle ms-2" style=" background: white; width: 15%; height: 50px;">  <a href="{{ route('stalk.profile', $user->id)}}">{{ucwords($user->name)}}</a>
+							<a href="{{ route('stalk.profile', $user->id)}}" class="list-group-item list-group-item-action border-0">
+								<div class="d-flex align-items-start">
+									<img src="{{url('/upload/profile/'.$user->profile_photo)}}" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+									<div class="flex-grow-1 ml-3">
+										{{ucwords($user->name)}}
+										@if($user->isonline())
+											<div><span class="badge rounded-pill alert-success">Online</span> </div>
+										@else
+											<div><span class="badge rounded-pill alert-dark">Offline</span> </div>
+										@endif
+									</div>
+								</div>
+							</a>
 					@else
-					<img src="/upload/profile/profile.jpg" class="rounded-circle ms-2" style=" background: white; width: 15%; height: 50px;">  <a href="{{ route('stalk.profile', $user->id)}}">{{ucwords($user->name)}}</a>
+							<a href="{{ route('chat.selectedUser', $user->id)}}" class="list-group-item list-group-item-action border-0">
+								<div class="d-flex align-items-start">
+									<img src="/upload/profile/profile.jpg" class="rounded-circle mr-1" alt="Vanessa Tucker" 
+									width="40" height="40">
+									<div class="flex-grow-1 ml-3">
+										{{ucwords($user->name)}}
+										@if($user->isonline())
+											<div><span class="badge rounded-pill alert-success">Online</span> </div>
+										@else
+											<div><span class="badge rounded-pill alert-dark">Offline</span> </div>
+										@endif
+									</div>
+								</div>
+							</a>
 				  @endif
 				</div>	
 			  @endforeach
@@ -30,10 +55,36 @@
 					  @foreach($all_user as $user)
 						<div class="mb-2 rounded-3" style="background-color: white; border-top:2px solid #0D6EFD;">
 						  @if(!empty($user->profile_photo))
-							<img src="{{url('/upload/profile/'.$user->profile_photo)}}" class="rounded-circle ms-2 my-1" style=" background: white; width: 15%; height: 50px;"> <a href="{{ route('stalk.profile', $user->id)}}">{{ucwords($user->name)}}</a>
+							<a href="{{ route('chat.selectedUser', $user->id)}}" class="list-group-item list-group-item-action border-0">
+								<div class="d-flex align-items-start">
+									<img src="{{url('/upload/profile/'.$user->profile_photo)}}" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+									<div class="flex-grow-1 ml-3">
+										{{ucwords($user->name)}}
+										@if($user->isonline())
+											<div><span class="badge rounded-pill alert-success">Online</span> </div>
+										@else
+											<div><span class="badge rounded-pill alert-dark">Offline</span> </div>
+										@endif
+									</div>
+								</div>
+							</a>
 							@else
-							<img src="/upload/profile/profile.jpg" class="rounded-circle ms-2 my-1" style=" background: white; width: 15%; height: 50px;"> <a href="{{ route('stalk.profile', $user->id)}}">{{ucwords($user->name)}}</a>
+							<a href="{{ route('chat.selectedUser', $user->id)}}" class="list-group-item list-group-item-action border-0">
+								<div class="d-flex align-items-start">
+									<img src="/upload/profile/profile.jpg" class="rounded-circle mr-1" alt="Vanessa Tucker" 
+									width="40" height="40">
+									<div class="flex-grow-1 ml-3">
+										{{ucwords($user->name)}}
+										@if($user->isonline())
+											<div><span class="badge rounded-pill alert-success">Online</span> </div>
+										@else
+											<div><span class="badge rounded-pill alert-dark">Offline</span> </div>
+										@endif
+									</div>
+								</div>
+							</a>
 						  @endif
+
 						</div>	
 					 @endforeach
 				</div>
@@ -41,3 +92,4 @@
 			</div><!--all-user-->
 
 		</div><!--col=md-3 right side bar-->	
+
