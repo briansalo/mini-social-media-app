@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Broadcast;
 
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -16,3 +18,14 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('chat.{receiverid}{userid}', function ($user,$receiverid,$userid) {
+
+    return Auth::check();
+    //return ['id' => $user->id, 'name' => $user->name]; 
+});
+
+//Broadcast::channel('chat', function ($user) {
+  //  return Auth::check();
+//    return ['id' => $user->id, 'name' => $user->name]; 
+//});

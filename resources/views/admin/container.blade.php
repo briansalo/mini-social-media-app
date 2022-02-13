@@ -28,6 +28,9 @@
 	 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+	<!--for vue-->
+	<script src="{{ asset('js/app.js') }}" defer></script>
+
 <style>
 .important-links a, .latest-post p{
 	text-decoration: none;
@@ -75,7 +78,6 @@ top: 0;
   </div>
 </div>
 <div class="container-fluid" style="background: #efefef;">
-
 	<!-- navbar-->
 	@include('admin.body.navbar')
 

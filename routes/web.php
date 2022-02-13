@@ -8,6 +8,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LikeController;
 
+use App\Http\Controllers\ChatController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,9 @@ use App\Http\Controllers\LikeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+  //  return view('welcome');
+//});
 
 Route::get('/home', function () {
     return view('backend.news-feed');
@@ -70,3 +72,10 @@ require __DIR__.'/auth.php';
    //like controller
     Route::get('/like', [LikeController::class, 'Like'])->name('like');
     Route::get('/unlike', [LikeController::class, 'UnLike'])->name('unlike');
+
+
+
+    //chat controller
+    Route::get('/selected-user/{receiver_id}', [ChatController::class, 'selectedusers'])->name('chat.selectedUser');
+    Route::get('/messages/{receiver_id}', [ChatController::class, 'fetchMessages']);
+    Route::post('/messages', [ChatController::class, 'sendMessage']);
