@@ -19,6 +19,12 @@
                             <a :href="'/stalk_profile/'+this.receiverid" target="_blank">
                                 <div class="flex-grow-1 ps-2 toCapitalFirst">
                                     <strong> {{this.receiveruser.name}}</strong>
+                                    <div v-if="this.receiveruser.Isonline">
+                                        <span class="badge rounded-pill alert-success">Online</span> 
+                                    </div>
+                                    <div v-else>
+                                        <span class="badge rounded-pill alert-dark">Offline</span> 
+                                    </div>
                                 </div>
                             </a>
 						</div>

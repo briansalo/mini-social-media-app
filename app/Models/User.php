@@ -20,6 +20,8 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    protected $appends=['Isonline'];
+
     protected $fillable = [
         'name',
         'email',
@@ -69,4 +71,17 @@ class User extends Authenticatable
         return false;
     }
 
+    //FOR VUEJS
+    public function getIsonlineAttribute(){
+
+        $user = User::where('id', $this->id)->first();
+        $now = Carbon::now();
+        $last_activity= Carbon::create($user->last_activity);
+        
+         if($last_activity->addMinutes(1) >= $now){
+                return true;
+        }
+        
+        return false;
+    }
 }
