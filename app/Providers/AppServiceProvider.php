@@ -18,7 +18,7 @@ use App\Models\Activity;
 
 
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
@@ -63,9 +63,9 @@ if($this->app->environment('production')) {
         $list1 = Friendship::where('second_user_id', Auth::id())->where('status', 'confirmed')->pluck('first_user_id')->toArray();
         $list_of_friend = User::whereIn('id', $list)->orWhereIn('id', $list1)->orderBy('name', 'ASC')->pluck('id');
 
-            //retrieve first all of the user who are friends for this current user before all user of this application
-           $all_user = User::whereIn('id', $list_of_friend)->orwhere('id', '!=', $id)
-           ->orderBy('name','asc')->get();
+            $user = User::where('id','!=',$id);
+            $all_user = User::whereIn('id',$list_of_friend)->union($user)->get();
+
             $view->with('all_user', $all_user); 
 
             
