@@ -19,6 +19,11 @@ class UserController extends Controller
     }
 
  
+    public function MonitorUserScroll(){
 
+        $now = Carbon::now();
+        User::where('id', auth::user()->id)->update(['last_activity'=> $now]);
+        
+    }
 
 }

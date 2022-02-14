@@ -102,7 +102,21 @@ top: 0;
 
 
 <script>
+
 $(document).ready(function() {
+
+
+	$(window).scroll(_.debounce(function(){
+	
+	    	 $.ajax({
+		  				url: "{{ route('monitor.user.scroll')}}",
+		   				method:'GET',
+		  			  success:function(data){
+
+		  				 }//success function
+	  			})// end of ajax
+
+	}, 250, { 'leading': true, 'trailing': false }));
 
 
     // This will fire when document is ready:
