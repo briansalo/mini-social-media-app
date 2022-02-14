@@ -59,7 +59,13 @@ if($this->app->environment('production')) {
 
 
         //......--------------get all user---------------------//
-           $all_user = User::where('id', '!=', $id)->orderBy('name','asc')->get();
+        $list = Friendship::where('first_user_id', Auth::id())->where('status', 'confirmed')->pluck('second_user_id')->toArray();
+        $list1 = Friendship::where('second_user_id', Auth::id())->where('status', 'confirmed')->pluck('first_user_id')->toArray();
+        $list_of_friend = User::whereIn('id', $list)->orWhereIn('id', $list1)->orderBy('name', 'ASC')->pluck('id');
+
+            //retrieve first all of the user who are friends for this current user before all user of this application
+           $all_user = User::whereIn('id', $list_of_friend)->orwhere('id', '!=', $id)
+           ->orderBy('name','asc')->get();
             $view->with('all_user', $all_user); 
 
             
