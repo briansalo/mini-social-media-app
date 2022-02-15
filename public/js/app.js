@@ -21232,6 +21232,10 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    Pusher.log = function (msg) {
+      console.log(msg);
+    };
+
     this.fetchmessage();
     Echo["private"]('chat.' + this.authid + this.receiverid).listen('MessageSent', function (e) {
       //  this.fetchmessage();

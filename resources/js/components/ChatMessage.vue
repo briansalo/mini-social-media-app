@@ -125,7 +125,9 @@ export default {
          }
      },
     created() {
-
+Pusher.log = function(msg) {
+  console.log(msg);
+};
         this.fetchmessage();
     
         Echo.private('chat.'+this.authid+this.receiverid)
