@@ -21,7 +21,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 
 Broadcast::channel('chat.{receiverid}{userid}', function ($user,$receiverid,$userid) {
 
-    return Auth::check();
+    return true;
     //return ['id' => $user->id, 'name' => $user->name]; 
 });
 
