@@ -34,6 +34,8 @@ require __DIR__.'/auth.php';
 
     Route::get('/', [UserController::class, 'log_out'])->name('log_out');
     Route::get('/monitor_user_scroll', [UserController::class, 'MonitorUserScroll'])->name('monitor.user.scroll');
+    Route::post('/pusher/auth', [PusherController::class, 'pusherAuth'])
+->middleware('auth');
 
 Route::middleware(['last_activity'])->group(function () {
     
