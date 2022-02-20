@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 	<!--for vue-->
-	<script src="{{ mix('js/app.js') }}" defer></script>
+	<script src="{{ mix('/js/app.js') }}" defer></script>
 
 <style>
 .important-links a, .latest-post p{
@@ -123,7 +123,7 @@ $(document).ready(function() {
     // This will fire when document is ready:
     $(window).resize(function() {
         // This will fire each time the window is resized:
-        if($(window).width() >= 1000) {
+        if($(window).width() >= 1265) {
             // if larger or equal
             $('#forSmallScreen').modal('hide');
         } else {
