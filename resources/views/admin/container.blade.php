@@ -68,7 +68,8 @@ top: 0;
 
       </div>
       <div class="modal-body">
-        <h5>As of now, this application is not applicable for small screen.</h5>
+        <h5>As of now, this application is not applicable for small screen. 
+        	<br>We highly suggest to use laptop or computer</h5>
         
 
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><Br>
@@ -122,7 +123,7 @@ $(document).ready(function() {
     // This will fire when document is ready:
     $(window).resize(function() {
         // This will fire each time the window is resized:
-        if($(window).width() >= 1265) {
+        if($(window).width() >= 1000) {
             // if larger or equal
             $('#forSmallScreen').modal('hide');
         } else {
