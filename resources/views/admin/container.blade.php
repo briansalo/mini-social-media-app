@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 	<!--for vue-->
-	<script src="{{ asset('js/app.js') }}" defer></script>
+	<script src="{{ mix('js/app.js') }}" defer></script>
 
 <style>
 .important-links a, .latest-post p{
