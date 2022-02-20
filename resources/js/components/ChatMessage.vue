@@ -125,14 +125,11 @@ export default {
          }
      },
     created() {
-Pusher.log = function(msg) {
-  console.log(msg);
-};
+
         this.fetchmessage();
-    
+
         Echo.private('chat.'+this.authid+this.receiverid)
         .listen('MessageSent', (e) => {
-          //  this.fetchmessage();
             this.messages.unshift({
                 message: e.message.message,
                 user: e.user
